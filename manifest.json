@@ -1,0 +1,25 @@
+{
+  "name": "GoFW",
+  "version": "1.0",
+  "description": "by @xmcp",
+  "icons": {"128": "icon.png"},
+  
+  "manifest_version": 2,
+  "minimum_chrome_version" : "17.0.0",
+  
+  "permissions": [
+    "tabs",
+    "*://*/*",
+    "webRequestBlocking",
+    "webRequest"
+  ],
+
+  "browser_action": {
+    "default_icon": "action.png",
+    "default_title": "防火墙设置",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  }
+}
