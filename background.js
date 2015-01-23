@@ -2,23 +2,38 @@ var count=[];
 var urls=[];
 var working=false;
 chrome.browserAction.setBadgeBackgroundColor({color:'#AA00AA'});
+chrome.extension.onRequest.addListener(
+  function(request,sender,sendResponse) {
+    chrome.tabs.query(
+      {active:true,currentWindow: true},
+      function(d) {
+        var tabid = [d[0].id]||0;
+        sendResponse({"tabid":tabid});
+      }
+    )
+  }
+);
 
 function push(details,department) {
-  chrome.tabs.query(
-    {active:true,windowType:"normal",currentWindow: true},
-    function(d) {
-      var tabid=d[0].id;
-      if(count[tabid]===undefined)
-        count[tabid]=1;
-      else
-        count[tabid]+=1;
-      if(urls[tabid]===undefined)
-        urls[tabid]=[];
-      urls[tabid].push([details.url,department]);
-      chrome.browserAction.setBadgeText({text:count[tabid].toString(),tabId:tabid});
-    }
-  )
+  var tabid=details.tabId;
+  if(count[tabid]===undefined)
+    count[tabid]=1;
+  else
+    count[tabid]+=1;
+  if(urls[tabid]===undefined)
+    urls[tabid]=[];
+  urls[tabid].push([details.url,department]);
+  chrome.browserAction.setBadgeText({text:count[tabid].toString(),tabId:tabid});
 }
+
+chrome.tabs.onUpdated.addListener(
+  function(tabId,changeInfo){
+    if(changeInfo.status=="loading") {
+      count[tabId] = undefined;
+      urls[tabId] = undefined;
+    }
+  }
+);
 
 chrome.extension.onRequest.addListener(
   function(request,sender,sendResponse) {
@@ -34,28 +49,31 @@ chrome.extension.onRequest.addListener(
 
 function nogapi(details){
   var url=details.url;
-  push(details,'跳转Google API');
+  push(details,'重定向Google API');
   return {redirectUrl: url.replace(".googleapis.com/",".useso.com/").replace('https://','http://')};
 }
 function nogana(details){
-  push(details,'屏蔽谷歌统计');
+  push(details,'拦截谷歌统计');
   return {"cancel": true};
 }
 function nogser(details){
-  push(details,'屏蔽失效服务');
+  push(details,'拦截无效服务');
   return {"cancel": true};
 }
 function noicon(details){
   var url=details.url;
-  if(url.indexOf('://libs.useso.com/')!=-1)
+  if(url.indexOf('chrome-extension://')===0)
     return {cancel: false};
-  push(details,'跳转Glyphicons');
-  return {redirectUrl: 'http://libs.useso.com/js/bootstrap/3.2.0/fonts/glyphicons-halflings-regular.woff'}
+  push(details,'缓存Glyphicons');
+  if(url[-1]=='2')
+    return {redirectUrl: chrome.extension.getURL('libs/glyphicons-halflings-regular.woff2')};
+  else
+    return {redirectUrl: chrome.extension.getURL('libs/glyphicons-halflings-regular.woff')}
 }
 
 function bindreq() {
   working=true;
-  chrome.browserAction.setIcon({path:'action.png'})
+  chrome.browserAction.setIcon({path:'icons/action.png'});
   if(localStorage["gapi"]==='true')
     chrome.webRequest.onBeforeRequest.addListener(
       nogapi,
@@ -77,14 +95,14 @@ function bindreq() {
   if(localStorage["icon"]==='true')
     chrome.webRequest.onBeforeRequest.addListener(
       noicon,
-      {urls:["*://*/*/glyphicons-halflings-regular.woff"]},
+      {urls:["*://*/*/glyphicons-halflings-regular.woff","*://*/*/glyphicons-halflings-regular.woff2"]},
       ["blocking"]
     );
 }
 function unbind(willrebind) {
   working=false;
   if(!willrebind) {
-    chrome.browserAction.setIcon({path:'disabled.png'});
+    chrome.browserAction.setIcon({path:'icons/disabled.png'});
     chrome.browserAction.setBadgeText({text:''});
   }
   chrome.webRequest.onBeforeRequest.removeListener(
@@ -104,7 +122,7 @@ function unbind(willrebind) {
   );
   chrome.webRequest.onBeforeRequest.addListener(
     noicon,
-    {urls:["*://*/glyphicons-halflings-regular.woff"]},
+    {urls:["*://*/*/glyphicons-halflings-regular.woff","*://*/*/glyphicons-halflings-regular.woff2"]},
     ["blocking"]
   );
 }

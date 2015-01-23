@@ -1,17 +1,19 @@
 <style>
-  .on {color: blue;}
-  .off {color: gray}
-  input[name=switch] {width: 100%; margin-top: 2px; margin-bottom: 2px;}
+  .on {color: white !important; background-color: #5cb85c;}
+  .off {color: white !important; background-color: gray;}
+  .on , .off {width: 100%; margin-top: 2px; margin-bottom: 2px;}
 </style>
-
-<input type="button" id="killer" class="off" name="switch" style="font-weight: bold" value="总开关（重启浏览器后重置）">
-<input type="button" id="gapi" class="off" name="switch" value="重定向 Google API">
-<input type="button" id="gana" class="off" name="switch" value="拦截 Google Analystics">
-<input type="button" id="icon" class="off" name="switch" value="重定向 Glyphicons">
-<input type="button" id="gser" class="off" name="switch" value="拦截所有大陆无效服务">
+<link href="libs/bootstrap.min.css" rel="stylesheet">
+<div style="margin: 2px;">
+<input type="button" id="killer" class="btn btn-sm off" name="switch" style="font-weight: bold" value="总开关（重启浏览器后重置）">
+<input type="button" id="gapi" class="btn btn-xs off" name="switch" value="重定向 Google API">
+<input type="button" id="gana" class="btn btn-xs off" name="switch" value="拦截 Google Analystics">
+<input type="button" id="icon" class="btn btn-xs off" name="switch" value="缓存 Glyphicons">
+<input type="button" id="gser" class="btn btn-xs off" name="switch" value="拦截大陆无效服务">
 <script src="minioptions.js"></script>
+</div>
 
-<p style="min-width: 200px;"><b>本页面共拦截 <span id="count">??</span> 个请求</b></p>
-<div id="all" style="overflow-x:auto; max-width: 350px; padding-bottom: 10px;"></div>
+<p style="min-width: 200px; padding-top: 5px;">&nbsp;<b>本页面共优化 <span class="badge" id="count">??</span> 个请求</b></p>
+<div id="all" style="overflow-x:auto; max-width: 350px; padding-bottom: 5px;"></div>
 
 <script src="popup.js"></script>

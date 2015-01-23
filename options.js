@@ -13,10 +13,11 @@ function save_options(name) {
   }
 }
 function restore_options() {
-  gapi.className=localStorage["gapi"]==='true'?"btn btn-xs on":"btn btn-xs off";
-  gana.className=localStorage["gana"]==='true'?"btn btn-xs on":"btn btn-xs off";
-  gser.className=localStorage["gser"]==='true'?"btn btn-xs on":"btn btn-xs off";
-  icon.className=localStorage["icon"]==='true'?"btn btn-xs on":"btn btn-xs off";
+  killer.checked=bgpage.working;
+  gapi.checked=localStorage["gapi"]==='true';
+  gana.checked=localStorage["gana"]==='true';
+  gser.checked=localStorage["gser"]==='true';
+  icon.checked=localStorage["icon"]==='true';
 }
 function switchkiller() {
   if(bgpage.working) {

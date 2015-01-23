@@ -1,8 +1,8 @@
 {
-  "name": "GoFW",
-  "version": "1.0",
-  "description": "by @xmcp",
-  "icons": {"128": "icon.png"},
+  "name": "加速器",
+  "version": "1.1",
+  "description": "优化网站常用前端库和公共组件的访问速度并屏蔽无法访问的不必要组件，减少大陆用户的网页加载时间。",
+  "icons": {"128": "icons/icon.png"},
   
   "manifest_version": 2,
   "minimum_chrome_version" : "17.0.0",
@@ -13,10 +13,15 @@
     "webRequestBlocking",
     "webRequest"
   ],
+  "web_accessible_resources": [
+    "libs/glyphicons-halflings-regular.woff",
+    "libs/glyphicons-halflings-regular.woff2"
+  ],
 
+  "options_page": "options.html",
   "browser_action": {
-    "default_icon": "action.png",
-    "default_title": "防火墙设置",
+    "default_icon": "icons/action.png",
+    "default_title": "加速器设置",
     "default_popup": "popup.html"
   },
   "background": {

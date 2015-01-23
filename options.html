@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh">
+  <meta charset="UTF-8">
+  <link href="libs/bootstrap.min.css" rel="stylesheet">
+  <title>加速器设置</title>
+</head>
+<body style="background-color: #EEE;"><div class="container">
+  <div class="page-header">
+    <h1>加速器&nbsp;<small>加快网页的加载速度</small></h1>
+  </div>
+  <table class="table">
+    <tr style="background-color: #DDD">
+      <th><input type="checkbox" id="killer"></th>
+      <th><label for="killer">总开关</label></th>
+      <th>您可以临时禁用加速器，在重启浏览器之后总开关会自动重新打开。</th>
+    </tr>
+    <tr>
+      <td><input type="checkbox" id="gapi"></td>
+      <td><label for="gapi">Google API 重定向</label></td>
+      <td>将网站使用的谷歌前端库和谷歌字体库重定向至<a href="http://libs.useso.com" target="_blank">360的CDN</a></td>
+    </tr>
+    <tr>
+      <td><input type="checkbox" id="gana"></td>
+      <td><label for="gana">Google Analystics 拦截</label></td>
+      <td>拦截不必要的谷歌统计服务</td>
+    </tr>
+    <tr>
+      <td><input type="checkbox" id="icon"></td>
+      <td><label for="icon">Glyphicons 缓存</label></td>
+      <td>缓存很多网站都会使用的 Glyhicons 图标库</td>
+    </tr>
+    <tr>
+      <td><input type="checkbox" id="gser"></td>
+      <td><label for="gser">无效服务拦截</label></td>
+      <td>
+        <p>拦截网页中的中国大陆无法访问的内嵌元素（Twitter/Facebook/Google/Youtube）</p>
+        <p><b>港台及海外用户不要打开本选项，否则会导致上述网站无法访问</b></p>
+      </td>
+    </tr>
+  </table>
+  <script src="options.js"></script>
+  <br />
+  <small>
+    made by <a href="https://github.com/xmcp/gofw" target="_blank">@xmcp</a>
+    &nbsp;&nbsp;&nbsp;
+    icon by <a href="http://icomoon.io/" target="_blank">icomoon</a>
+  </small>
+</div></body>
+</html>
