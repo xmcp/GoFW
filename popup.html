@@ -1,9 +1,11 @@
 <style>
   .on {color: white !important; background-color: #5cb85c;}
   .off {color: white !important; background-color: gray;}
-  .on , .off {width: 100%; margin-top: 2px; margin-bottom: 2px;}
+  .on , .off {width: 100%; margin-top: 3px; margin-bottom: 3px;}
 </style>
-<link href="libs/bootstrap.min.css" rel="stylesheet">
+<link href="libs/css/bootstrap.min.css" rel="stylesheet">
+<body style="background-color: #DDD; padding: 3px;">
+
 <div style="margin: 2px;">
 <input type="button" id="killer" class="btn btn-sm off" name="switch" style="font-weight: bold" value="总开关（重启浏览器后重置）">
 <input type="button" id="gapi" class="btn btn-xs off" name="switch" value="重定向 Google API">
@@ -17,3 +19,5 @@
 <div id="all" style="overflow-x:auto; max-width: 350px; padding-bottom: 5px;"></div>
 
 <script src="popup.js"></script>
+
+</body>

@@ -14,8 +14,8 @@
     "webRequest"
   ],
   "web_accessible_resources": [
-    "libs/glyphicons-halflings-regular.woff",
-    "libs/glyphicons-halflings-regular.woff2"
+    "libs/fonts/glyphicons-halflings-regular.woff",
+    "libs/fonts/glyphicons-halflings-regular.woff2"
   ],
 
   "options_page": "options.html",

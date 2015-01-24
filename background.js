@@ -14,6 +14,18 @@ chrome.extension.onRequest.addListener(
   }
 );
 
+chrome.runtime.onInstalled.addListener(
+  function(details) {
+    if(details.reason==="install") {
+      localStorage["gapi"]=true;
+      localStorage["gana"]=true;
+      localStorage["gser"]=false;
+      localStorage["icon"]=true;
+      window.open(chrome.extension.getURL('options.html'));
+    }
+  }
+);
+
 function push(details,department) {
   var tabid=details.tabId;
   if(count[tabid]===undefined)
@@ -29,21 +41,16 @@ function push(details,department) {
 chrome.tabs.onUpdated.addListener(
   function(tabId,changeInfo){
     if(changeInfo.status=="loading") {
-      count[tabId] = undefined;
-      urls[tabId] = undefined;
+      count[tabId]=undefined;
+      urls[tabId]=undefined;
     }
   }
 );
 
-chrome.extension.onRequest.addListener(
-  function(request,sender,sendResponse) {
-    chrome.tabs.query(
-      {active:true,windowType:"normal",currentWindow: true},
-      function(d) {
-        var tabid = [d[0].id];
-        sendResponse({"working":working,"count": count[tabid]||0, "urls": urls[tabid]||[]})
-      }
-    )
+chrome.tabs.onRemoved.addListener(
+  function(tabId,removeInfo){
+    count[tabId]=undefined;
+    urls[tabId]=undefined;
   }
 );
 
@@ -62,13 +69,13 @@ function nogser(details){
 }
 function noicon(details){
   var url=details.url;
-  if(url.indexOf('chrome-extension://')===0)
+  if(url.indexOf('chrome-extension://')==0)
     return {cancel: false};
   push(details,'缓存Glyphicons');
   if(url[-1]=='2')
-    return {redirectUrl: chrome.extension.getURL('libs/glyphicons-halflings-regular.woff2')};
+    return {redirectUrl: chrome.extension.getURL('libs/fonts/glyphicons-halflings-regular.woff2')};
   else
-    return {redirectUrl: chrome.extension.getURL('libs/glyphicons-halflings-regular.woff')}
+    return {redirectUrl: chrome.extension.getURL('libs/fonts/glyphicons-halflings-regular.woff')}
 }
 
 function bindreq() {

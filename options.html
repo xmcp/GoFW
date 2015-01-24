@@ -2,18 +2,24 @@
 <html>
 <head lang="zh">
   <meta charset="UTF-8">
-  <link href="libs/bootstrap.min.css" rel="stylesheet">
+  <link href="libs/css/bootstrap.min.css" rel="stylesheet">
   <title>加速器设置</title>
 </head>
 <body style="background-color: #EEE;"><div class="container">
   <div class="page-header">
     <h1>加速器&nbsp;<small>加快网页的加载速度</small></h1>
   </div>
+  <div class="alert alert-info">
+    <span class="glyphicon glyphicon-thumbs-up"></span>
+    您可以访问&nbsp;
+    <a class="alert-link" href="http://getbootstrap.com/components/" target="_blank">示例网站</a>
+    &nbsp;体验加速效果
+  </div>
   <table class="table">
-    <tr style="background-color: #DDD">
-      <th><input type="checkbox" id="killer"></th>
-      <th><label for="killer">总开关</label></th>
-      <th>您可以临时禁用加速器，在重启浏览器之后总开关会自动重新打开。</th>
+    <tr style="background-color: #ECC">
+      <td><input type="checkbox" id="killer"></td>
+      <td><label for="killer">总开关</label></td>
+      <td>您可以临时禁用加速器，<b>在重启浏览器之后总开关会自动重新打开。</b></td>
     </tr>
     <tr>
       <td><input type="checkbox" id="gapi"></td>
@@ -28,7 +34,7 @@
     <tr>
       <td><input type="checkbox" id="icon"></td>
       <td><label for="icon">Glyphicons 缓存</label></td>
-      <td>缓存很多网站都会使用的 Glyhicons 图标库</td>
+      <td>将很多网站都会使用的 Glyhicons 图标库缓存到本地</td>
     </tr>
     <tr>
       <td><input type="checkbox" id="gser"></td>
@@ -43,7 +49,8 @@
   <br />
   <small>
     made by <a href="https://github.com/xmcp/gofw" target="_blank">@xmcp</a>
-    &nbsp;&nbsp;&nbsp;
+    from <a href="http://www.illumer.org" target="_blank">illumer</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     icon by <a href="http://icomoon.io/" target="_blank">icomoon</a>
   </small>
 </div></body>
