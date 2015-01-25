@@ -69,8 +69,6 @@ function nogser(details){
 }
 function noicon(details){
   var url=details.url;
-  if(url.indexOf('chrome-extension://')==0)
-    return {cancel: false};
   push(details,'缓存Glyphicons');
   if(url[-1]=='2')
     return {redirectUrl: chrome.extension.getURL('libs/fonts/glyphicons-halflings-regular.woff2')};
@@ -102,7 +100,9 @@ function bindreq() {
   if(localStorage["icon"]==='true')
     chrome.webRequest.onBeforeRequest.addListener(
       noicon,
-      {urls:["*://*/*/glyphicons-halflings-regular.woff","*://*/*/glyphicons-halflings-regular.woff2"]},
+      {urls:[
+        "http://*/*/glyphicons-halflings-regular.woff","http://*/*/glyphicons-halflings-regular.woff2",
+        "https://*/*/glyphicons-halflings-regular.woff","https://*/*/glyphicons-halflings-regular.woff2"]},
       ["blocking"]
     );
 }
@@ -129,7 +129,9 @@ function unbind(willrebind) {
   );
   chrome.webRequest.onBeforeRequest.addListener(
     noicon,
-    {urls:["*://*/*/glyphicons-halflings-regular.woff","*://*/*/glyphicons-halflings-regular.woff2"]},
+    {urls:[
+        "http://*/*/glyphicons-halflings-regular.woff","http://*/*/glyphicons-halflings-regular.woff2",
+        "https://*/*/glyphicons-halflings-regular.woff","https://*/*/glyphicons-halflings-regular.woff2"]},
     ["blocking"]
   );
 }
