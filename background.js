@@ -106,7 +106,7 @@ function nojque(details) {
   }
 }
 var nojque_filter={
-  urls:["http://*/*/jquery*.min.js","https://*/*/jquery*.min.js","http://*/jquery*.min.js","https://*/jquery*.min.js"],
+  urls:["http://*/*/jquery*.min.js","http://*/jquery*.min.js"],
   types:["script"]
 };
 var jq_vers={'1.10.0':true,'1.10.1':true,'1.10.2':true,'1.11.0':true,'1.11.1':true,'1.2.3':true,
