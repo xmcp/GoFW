@@ -1,6 +1,6 @@
 {
   "name": "加速器",
-  "version": "1.1",
+  "version": "2.0",
   "description": "优化网站常用前端库和公共组件的访问速度并屏蔽无法访问的不必要组件，减少大陆用户的网页加载时间。",
   "icons": {"128": "icons/icon.png"},
   
@@ -9,7 +9,7 @@
   
   "permissions": [
     "tabs",
-    "*://*/*",
+    "http://*/*","https://*/*",
     "webRequestBlocking",
     "webRequest"
   ],
@@ -17,6 +17,7 @@
     "libs/fonts/glyphicons-halflings-regular.woff",
     "libs/fonts/glyphicons-halflings-regular.woff2"
   ],
+  "update_url": "http://s.xmcp.tk/gofw/update.xml",
 
   "options_page": "options.html",
   "browser_action": {

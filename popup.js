@@ -2,7 +2,6 @@ var count=document.querySelector('#count');
 var all=document.querySelector("#all");
 var killer=document.querySelector("#killer");
 var bgpage=chrome.extension.getBackgroundPage();
-killer.className = bgpage.working ? "btn btn-sm on" : "btn btn-sm off";
 chrome.extension.sendRequest({},function(response){
   tabid=response["tabid"];
   if(tabid!==0) {

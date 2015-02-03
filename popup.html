@@ -1,23 +1,30 @@
+<html>
+<head>
+<meta charset="utf-8">
 <style>
   .on {color: white !important; background-color: #5cb85c;}
   .off {color: white !important; background-color: gray;}
   .on , .off {width: 100%; margin-top: 3px; margin-bottom: 3px;}
+  #killer {font-weight: bold}
 </style>
 <link href="libs/css/bootstrap.min.css" rel="stylesheet">
+</head>
 <body style="background-color: #DDD; padding: 3px;">
 
 <div style="margin: 2px;">
-<input type="button" id="killer" class="btn btn-sm off" name="switch" style="font-weight: bold" value="×Ü¿ª¹Ø£¨ÖØÆôä¯ÀÀÆ÷ºóÖØÖÃ£©">
-<input type="button" id="gapi" class="btn btn-xs off" name="switch" value="ÖØ¶¨Ïò Google API">
-<input type="button" id="gana" class="btn btn-xs off" name="switch" value="À¹½Ø Google Analystics">
-<input type="button" id="icon" class="btn btn-xs off" name="switch" value="»º´æ Glyphicons">
-<input type="button" id="gser" class="btn btn-xs off" name="switch" value="À¹½Ø´óÂ½ÎŞĞ§·şÎñ">
+<input type="button" id="killer" class="btn btn-sm off" value="æ€»å¼€å…³ï¼ˆé‡å¯æµè§ˆå™¨åé‡ç½®ï¼‰">
+<input type="button" id="gapi" class="btn btn-xs off" value="é‡å®šå‘ Google API">
+<input type="button" id="jque" class="btn btn-xs off" value="é‡å®šå‘ jQuery">
+<input type="button" id="icon" class="btn btn-xs off" value="ç¼“å­˜ Glyphicons">
+<input type="button" id="gana" class="btn btn-xs off" value="æ‹¦æˆª Google Analytics">
+<input type="button" id="gser" class="btn btn-xs off" value="æ‹¦æˆªå¤§é™†æ— æ•ˆæœåŠ¡">
 <script src="minioptions.js"></script>
 </div>
 
-<p style="min-width: 200px; padding-top: 5px;">&nbsp;<b>±¾Ò³Ãæ¹²ÓÅ»¯ <span class="badge" id="count">??</span> ¸öÇëÇó</b></p>
+<p style="min-width: 200px; padding-top: 5px;">&nbsp;<b>æœ¬é¡µé¢å…±ä¼˜åŒ– <span class="badge" id="count">??</span> ä¸ªè¯·æ±‚</b></p>
 <div id="all" style="overflow-x:auto; max-width: 350px; padding-bottom: 5px;"></div>
 
 <script src="popup.js"></script>
 
 </body>
+</html>
