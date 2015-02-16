@@ -37,4 +37,9 @@ gana.addEventListener('click',function(){save_options(gana);});
 gser.addEventListener('click',function(){save_options(gser);});
 icon.addEventListener('click',function(){save_options(icon);});
 jque.addEventListener('click',function(){save_options(jque);});
-killer.addEventListener('click',switchkiller);
+if(localStorage["netchk"]==="true") {
+  killer.setAttribute("disabled","disabled");
+  killer.value="由于您位于 "+bgpage.addr+"，加速器已"+(bgpage.working?"启用":"禁用");
+}
+else
+  killer.addEventListener('click',switchkiller);

@@ -1,6 +1,7 @@
 var count=[];
 var urls=[];
 var working=false;
+var addr='N/A';
 chrome.browserAction.setBadgeBackgroundColor({color:'#AA00AA'});
 chrome.extension.onRequest.addListener(
   function(request,sender,sendResponse) {
@@ -50,7 +51,7 @@ chrome.tabs.onUpdated.addListener(
 );
 
 chrome.tabs.onRemoved.addListener(
-  function(tabId,removeInfo){
+  function(tabId){
     count[tabId]=undefined;
     urls[tabId]=undefined;
   }
@@ -88,7 +89,6 @@ function nojque(details) {
   if(url[2]==="libs.useso.com" || url[2]==="ajax.useso.com" ||url[2]==="ajax.googleapis.com")
     return {cancel: false};
   var len=url.length;
-  console.debug(url);
   if(url[len-1]==="jquery.min.js") {
     if (jq_vers[url[len-2]]!==undefined) {
       push(details,"重定向 jQuery");
@@ -157,4 +157,50 @@ function unbind(willrebind) {
   chrome.webRequest.onBeforeRequest.removeListener(nojque,nojque_filter,["blocking"]);
 }
 
+function checkNetwork() {
+  var xhr = new XMLHttpRequest();
+  xhr.open('get', 'http://api.map.baidu.com/location/ip?ak=cSjy2WQz2Kmhqcfgs6LGm18Q', true);
+  xhr.onload = function () {
+    var result = JSON.parse(xhr.responseText);
+    if (result['status'] !== 0) {
+      addr = "海外";
+      unbind();
+      return;
+    }
+    addr = result['address'].split('|')[1];
+    if (result['address'].split('|')[0] === 'CN')
+      bindreq();
+    else
+      unbind();
+  };
+  xhr.onerror = xhr.onabort = xhr.ontimeout = function (event) {
+    addr = "（网络错误，无法获取）";
+  };
+  xhr.setRequestHeader("If-Modified-Since", "0");
+  xhr.send();
+}
+
+function startCheckNetwork(firstrun) {
+  checkNetwork();
+  window.netchk=setInterval(checkNetwork,10*1000);
+  if(firstrun===true)
+    chrome.permissions.contains({permissions: ['idle']},function(result) {
+      if (result) {
+        chrome.idle.setDetectionInterval(15);
+        chrome.idle.onStateChanged.addListener(function(details) {
+          stopCheckNetwork();
+          if(details==="active")
+            window.netchk=setInterval(checkNetwork,10*1000);
+          else
+            window.netchk=setInterval(checkNetwork,60*1000);
+        });
+      }
+    });
+}
+function stopCheckNetwork() {
+  clearInterval(netchk);
+}
+
+if(localStorage["netchk"]==="true")
+  startCheckNetwork(true);
 bindreq();

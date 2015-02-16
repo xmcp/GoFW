@@ -3,7 +3,7 @@ var gana=document.querySelector('#gana');
 var gser=document.querySelector('#gser');
 var icon=document.querySelector('#icon');
 var jque=document.querySelector('#jque');
-var killer=document.querySelector('#killer');
+var netchk=document.querySelector('#netchk');
 var bgpage=chrome.extension.getBackgroundPage();
 function save_options(name) {
   localStorage[name.id]=localStorage[name.id]!=='true';
@@ -14,23 +14,14 @@ function save_options(name) {
   }
 }
 function restore_options() {
-  killer.checked=bgpage.working;
+  netchk.checked=localStorage["netchk"]==='true';
   gapi.checked=localStorage["gapi"]==='true';
   gana.checked=localStorage["gana"]==='true';
   gser.checked=localStorage["gser"]==='true';
   icon.checked=localStorage["icon"]==='true';
   jque.checked=localStorage["jque"]==='true';
 }
-function switchkiller() {
-  if(bgpage.working) {
-    bgpage.unbind();
-    killer.className="btn btn-sm off";
-  }
-  else {
-    bgpage.bindreq();
-    killer.className="btn btn-sm on";
-  }
-}
+
 document.addEventListener('DOMContentLoaded',function(){
   restore_options();
   var xhr = new XMLHttpRequest();
@@ -45,4 +36,12 @@ gana.addEventListener('click',function(){save_options(gana);});
 gser.addEventListener('click',function(){save_options(gser);});
 icon.addEventListener('click',function(){save_options(icon);});
 jque.addEventListener('click',function(){save_options(jque);});
-killer.addEventListener('click',switchkiller);
+netchk.addEventListener('click',function(){
+  localStorage["netchk"]=netchk.checked;
+  if(netchk.checked) {
+    chrome.permissions.request({permissions: ['idle']});
+    bgpage.startCheckNetwork();
+  }
+  else
+    bgpage.stopCheckNetwork();
+});
