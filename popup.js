@@ -5,7 +5,7 @@ var bgpage=chrome.extension.getBackgroundPage();
 chrome.extension.sendRequest({},function(response){
   tabid=response["tabid"];
   if(tabid!==0) {
-    count.innerText = bgpage.count[tabid]||0;
+    count.innerText = bgpage.urls[tabid]!==undefined?bgpage.urls[tabid].length:0;
     urls=bgpage.urls[tabid]||[];
     for (var now=0; now<urls.length; now++) {
       var sub = document.createElement("li");

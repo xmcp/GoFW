@@ -32,13 +32,14 @@ function push(details,department) {
   var tabid=details.tabId;
   if(tabid==-1) return;
   if(count[tabid]===undefined)
-    count[tabid]=1;
-  else
-    count[tabid]+=1;
+    count[tabid]=[];
+  else if(count[tabid][details.requestId]===true)
+    return;
+  count[tabid][details.requestId]=true;
   if(urls[tabid]===undefined)
     urls[tabid]=[];
   urls[tabid].push([details.url,department]);
-  chrome.browserAction.setBadgeText({text:count[tabid].toString(),tabId:tabid});
+  chrome.browserAction.setBadgeText({text:urls[tabid].length.toString(),tabId:tabid});
 }
 
 chrome.tabs.onUpdated.addListener(
