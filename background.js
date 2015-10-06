@@ -60,6 +60,11 @@ chrome.tabs.onRemoved.addListener(
 
 function nogapi(details){
   var url=details.url;
+  //try redirect jquery first
+  var result=nojque(details);
+  if(result['cancel']===undefined)
+      return result;
+  
   push(details,'重定向 Google API');
   return {redirectUrl: url.replace(".googleapis.com/",".useso.com/").replace('https://','http://')};
 }
@@ -87,13 +92,13 @@ var nogser_filter={
 
 function nojque(details) {
   var url=details.url.split('/');
-  if(url[2]==="libs.useso.com" || url[2]==="ajax.useso.com" ||url[2]==="ajax.googleapis.com")
+  if(url[2]==="libs.useso.com"||url[2]==="ajax.useso.com"||url[2]=="cdn.bootcss.com")
     return {cancel: false};
   var len=url.length;
   if(url[len-1]==="jquery.min.js") {
     if (jq_vers[url[len-2]]!==undefined) {
       push(details,"重定向 jQuery");
-      return {redirectUrl: "http://libs.useso.com/js/jquery/" + url[len-2] + "/jquery.min.js"};
+      return {redirectUrl: "https://cdn.bootcss.com/jquery/" + url[len-2] + "/jquery.min.js"};
     }
     else
       return {cancel: false};
@@ -103,18 +108,22 @@ function nojque(details) {
     return {cancel: false};
   else {
     push(details,"重定向 jQuery");
-    return {redirectUrl: "http://libs.useso.com/js/jquery/" + result[1] + "/jquery.min.js"};
+    return {redirectUrl: "https://cdn.bootcss.com/jquery/" + result[1] + "/jquery.min.js"};
   }
 }
 var nojque_filter={
   urls:["http://*/*/jquery*.min.js","http://*/jquery*.min.js"],
   types:["script"]
 };
-var jq_vers={'1.10.0':true,'1.10.1':true,'1.10.2':true,'1.11.0':true,'1.11.1':true,'1.2.3':true,
-  '1.2.6':true,'1.3.0':true,'1.3.1':true,'1.3.2':true,'1.4.0':true,'1.4.1':true,'1.4.2':true,
-  '1.4.3':true,'1.4.4':true,'1.6.1':true,'1.6.2':true,'1.6.4':true,'1.7':true,'1.7.1':true,
-  '1.7.2':true,'1.8.0':true,'1.8.1':true,'1.8.2':true,'1.8.3':true,'1.9.0':true,'1.9.1':true,
-  '2.0.0':true,'2.0.1':true,'2.0.2':true,'2.0.3':true,'2.1.0':true,'2.1.1':true};
+var jq_vers={
+  '3.0.0-alpha1':true,'2.1.4':true,'2.1.3':true,'2.1.2':true,'2.1.1':true,'2.1.1-rc2':true,
+  '2.1.1-rc1':true,'2.1.1-beta1':true,'2.1.0':true,'2.1.0-rc1':true,'2.1.0-beta3':true,
+  '2.1.0-beta2':true,'2.0.3':true,'2.0.2':true,'2.0.1':true,'2.0.0':true,'1.11.3':true,
+  '1.11.2':true,'1.11.1':true,'1.11.1-rc2':true,'1.11.1-rc1':true,'1.11.1-beta1':true,'1.11.0':true,
+  '1.11.0-rc1':true,'1.11.0-beta3':true,'1.10.2':true,'1.10.1':true,'1.10.0':true,'1.9.1':true,
+  '1.9.0':true,'1.8.3':true,'1.8.2':true,'1.8.1':true,'1.8.0':true,'1.7.2':true,'1.7.1':true,
+  '1.7':true,'1.6.4':true,'1.6.2':true,'1.6.1':true,'1.4.4':true,'1.4.3':true,'1.4.2':true,
+  '1.4.1':true,'1.4.0':true,'1.3.2':true,'1.3.1':true,'1.3.0':true,'1.2.6':true,'1.2.3':true };
 
 function noicon(details){
   var url=details.url;
