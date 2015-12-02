@@ -86,7 +86,7 @@ function nogser(details){
   return {"cancel": true};
 }
 var nogser_filter={
-  urls:["*://*.google.com/*","*://*.youtube.com/*","*://*.facebook.com/*","*://*.twitter.com/*","*://*.googlecode.com/*"],
+  urls:["*://*.google.com/*","*://*.youtube.com/*","*://*.facebook.com/*","*://*.twitter.com/*","*://*.googlecode.com/*","*://*.gravatar.com/*"],
   types:["sub_frame","stylesheet","script","image","object","xmlhttprequest","other"]
 };
 
