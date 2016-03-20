@@ -1,6 +1,8 @@
 # GoFW
 [添加到 Chrome](http://s.xmcp.tk/gofw/latest.crx)
 
+![code style: extremely bad](https://img.shields.io/badge/_code_style_-_extremely_bad_-red.svg)
+
 **（本扩展程序不是翻墙软件，不要指望能使用本程序上 Youtube）**
 
 ## 当你上境外网站时，是否有如下烦恼？
