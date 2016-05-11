@@ -1,12 +1,12 @@
 {
   "name": "加速器",
-  "version": "2.6.1",
+  "version": "2.7",
   "description": "优化网站常用前端库和公共组件的访问速度并屏蔽无法访问的不必要组件，减少大陆用户的网页加载时间。",
   "icons": {"128": "icons/icon.png"},
   
   "manifest_version": 2,
   "minimum_chrome_version" : "25.0.0",
-  "update_url": "http://s.xmcp.tk/gofw/update.xml",
+  "update_url": "http://s.xmcp.ml/gofw/update.xml",
 
   "permissions": [
     "tabs",
@@ -15,10 +15,11 @@
     "webRequest"
   ],
   "optional_permissions": [
-    "idle"
+    "idle",
+    "proxy"
   ],
   "content_security_policy":
-    "default-src 'self' https://*.cnzz.com; frame-src http://s.xmcp.tk; img-src http://s.xmcp.tk https://*.cnzz.com; object-src 'self'; connect-src http://s.xmcp.tk http://api.map.baidu.com; style-src 'self' 'unsafe-inline'",
+    "default-src 'self' https://*.cnzz.com; frame-src http://s.xmcp.ml; img-src data: http://s.xmcp.ml https://*.cnzz.com; object-src 'self'; connect-src http://s.xmcp.ml http://api.map.baidu.com; style-src 'self' 'unsafe-inline'",
   "web_accessible_resources": [
     "libs/fonts/glyphicons-halflings-regular.woff",
     "libs/fonts/glyphicons-halflings-regular.woff2"

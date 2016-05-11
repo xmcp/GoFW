@@ -1,5 +1,5 @@
 # GoFW
-[添加到 Chrome](http://s.xmcp.tk/gofw/latest.crx)
+[添加到 Chrome](http://s.xmcp.ml/gofw/latest.crx)
 
 **（本扩展程序不是翻墙软件，不要指望能使用本程序上 Youtube）**
 
@@ -15,7 +15,7 @@
 
 GoFW 将上述 JS 库重定向到国内的 [360 CDN](http://libs.useso.com/) 和 [BootCDN](http://www.bootcdn.cn/)，缓存了 Glyphicons 图标，同时屏蔽浏览器向被墙域名的请求，帮 GFW 照耀下的广大网友有效提升网页打开速度！
 
-[CRX下载](http://s.xmcp.tk/gofw/latest.crx) （适用于 Chrome 25 或更高版本）
+[CRX下载](http://s.xmcp.ml/gofw/latest.crx) （适用于 Chrome 25 或更高版本）
 
 ## 网站示例：
 - [getbootstrap.com](http://getbootstrap.com/css/)，使用了谷歌统计、Glyphicons、jQuery 和 twitter 分享按钮；

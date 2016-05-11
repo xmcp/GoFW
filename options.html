@@ -4,20 +4,15 @@
   <meta charset="UTF-8">
   <link href="libs/css/bootstrap.min.css" rel="stylesheet">
   <title>加速器设置</title>
+  <style>
+    .yahei {font-family: '微软雅黑', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;}
+  </style>
 </head>
-<body style="background-color: #EEE;"><div class="container">
-  <div class="page-header">
+<body style="background-color: #eef;"><div class="container">
+  <div class="page-header yahei">
     <h1>加速器&nbsp;<small>境外网站提速神器</small></h1>
   </div>
-  <table class="table">
-    <tr style="background-color: #ECC">
-      <td><input type="checkbox" id="netchk"></td>
-      <td><label for="netchk">自动检测网络状态&nbsp;&nbsp;<span class="label label-info">BETA</span></label></td>
-      <td>
-        <p>加速器将定期检测您的IP地址。当IP地址不属于中国大陆时，加速器将暂时关闭</p>
-        <p>本功能会对浏览器性能有轻微的影响，<b>没有梯子的用户无需打开此选项</b></p>
-      </td>
-    </tr>
+  <table class="table table-hover"><tbody>
     <tr>
       <td><input type="checkbox" id="gapi"></td>
       <td><label for="gapi">Google API 提速</label></td>
@@ -46,10 +41,30 @@
         <p><b>港台及海外用户不要打开本选项，否则会导致上述网站无法访问</b></p>
       </td>
     </tr>
-  </table>
+  </tbody></table>
+  <h4 class="yahei">自动设置&nbsp;<small>在科学上网时自动临时关闭加速器</small></h4>
+  <br />
+  <table class="table table-hover"><tbody>
+    <tr>
+      <td><input type="checkbox" id="netchk"></td>
+      <td><label for="netchk">根据IP地址自动设置</label></td>
+      <td>
+        <p>加速器将定期检测您的IP地址。当IP地址不属于中国大陆时，加速器将暂时关闭</p>
+        <p>本功能会对浏览器性能有轻微的影响，<b>没有梯子的用户无需打开此选项</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td><input type="checkbox" id="proxychk"></td>
+      <td><label for="proxychk">根据HTTP代理自动设置</label></td>
+      <td>
+        <p>当Chrome使用代理服务器连接网络时，加速器将暂时关闭</p>
+        <p>本选项对性能的影响较小，但无法识别HTTP代理以外的翻墙方法（如VPN）。<b>没有梯子的用户无需打开此选项</b></p>
+      </td>
+    </tr>
+  </tbody></table>
   <script src="options.js"></script>
   <br />
-  <iframe src="http://s.xmcp.tk/gofw/stat/options.html" style="display: none; height: 0; width: 0;"></iframe>
+  <iframe src="http://s.xmcp.ml/gofw/stat/options.html" style="display: none; height: 0; width: 0;"></iframe>
   <div id="ad">公告加载中……</div>
   <small>
     made by <a href="http://zhihu.com/people/xmcp" target="_blank">@xmcp</a>
