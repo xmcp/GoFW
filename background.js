@@ -63,12 +63,14 @@ chrome.tabs.onRemoved.addListener(
 function nogapi(details){
   var url=details.url;
   //try redirect jquery first
-  var result=nojque(details);
-  if(result['cancel']===undefined)
-      return result;
+  if(localStorage["jque"]==="true") {
+      var result=nojque(details);
+      if(result['cancel']===undefined)
+          return result;
+  }
   
   push(details,'重定向 Google API');
-  return {redirectUrl: url.replace(".googleapis.com/",".useso.com/").replace('https://','http://')};
+  return {redirectUrl: url.replace(".googleapis.com/",".proxy.ustclug.org/")};
 }
 var nogapi_filter={
   urls:["*://ajax.googleapis.com/*","*://fonts.googleapis.com/*"],
