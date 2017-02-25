@@ -1,5 +1,8 @@
 # GoFW
-[添加到 Chrome](http://s.xmcp.ml/gofw/latest.crx)
+
+[在 Chrome WebStore 下载](https://chrome.google.com/webstore/detail/%E5%8A%A0%E9%80%9F%E5%99%A8/hgifnmdnlmhphhpfhpaoljpakcndhnhj)
+
+[直接下载 CRX 文件](http://s.xmcp.ml/gofw/latest.crx)
 
 ![code style: extremely bad](https://img.shields.io/badge/_code_style_-_extremely_bad_-red.svg)
 
@@ -15,9 +18,10 @@
 
 **五大症状，一个对策！**
 
-GoFW 将上述 JS 库重定向到国内的 [360 CDN](http://libs.useso.com/) 和 [BootCDN](http://www.bootcdn.cn/)，缓存了 Glyphicons 图标，同时屏蔽浏览器向被墙域名的请求，帮 GFW 照耀下的广大网友有效提升网页打开速度！
+GoFW 将上述 JS 库重定向到国内的 [中科大Linux用户协会 CDN](http://lug.ustc.edu.cn/) 和 [BootCDN](http://www.bootcdn.cn/)，缓存了 Glyphicons 图标，同时屏蔽浏览器向被墙域名的请求，帮 GFW 照耀下的广大网友有效提升网页打开速度！
 
-[CRX下载](http://s.xmcp.ml/gofw/latest.crx) （适用于 Chrome 25 或更高版本）
+能翻墙的用户请[在 Chrome WebStore 下载](https://chrome.google.com/webstore/detail/%E5%8A%A0%E9%80%9F%E5%99%A8/hgifnmdnlmhphhpfhpaoljpakcndhnhj)，其他用户也可以
+[直接下载 CRX 文件](http://s.xmcp.ml/gofw/latest.crx)。（适用于 Chrome 25 或更高版本）
 
 ## 网站示例：
 - [getbootstrap.com](http://getbootstrap.com/css/)，使用了谷歌统计、Glyphicons、jQuery 和 twitter 分享按钮；
