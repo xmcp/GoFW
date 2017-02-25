@@ -1,12 +1,11 @@
 {
   "name": "加速器",
-  "version": "2.8",
+  "version": "2.8.1",
   "description": "优化网站常用前端库和公共组件的访问速度并屏蔽无法访问的不必要组件，减少大陆用户的网页加载时间。",
   "icons": {"128": "icons/icon.png"},
   
   "manifest_version": 2,
   "minimum_chrome_version" : "25.0.0",
-  "update_url": "http://s.xmcp.ml/gofw/update.xml",
 
   "permissions": [
     "tabs",
