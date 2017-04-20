@@ -1,10 +1,13 @@
 # GoFW
 
+[![Chrome Web Store - Version](https://img.shields.io/chrome-web-store/v/hgifnmdnlmhphhpfhpaoljpakcndhnhj.svg)](https://chrome.google.com/webstore/detail/%E5%8A%A0%E9%80%9F%E5%99%A8/hgifnmdnlmhphhpfhpaoljpakcndhnhj)
+[![Chrome Web Store - Downloads](https://img.shields.io/chrome-web-store/d/hgifnmdnlmhphhpfhpaoljpakcndhnhj.svg)](https://chrome.google.com/webstore/detail/%E5%8A%A0%E9%80%9F%E5%99%A8/hgifnmdnlmhphhpfhpaoljpakcndhnhj)
+[![Chrome Web Store - Rating](https://img.shields.io/chrome-web-store/rating/hgifnmdnlmhphhpfhpaoljpakcndhnhj.svg)](https://chrome.google.com/webstore/detail/%E5%8A%A0%E9%80%9F%E5%99%A8/hgifnmdnlmhphhpfhpaoljpakcndhnhj)
+![code style: extremely bad](https://img.shields.io/badge/_code_style_-_extremely_bad_-red.svg)
+
 [在 Chrome WebStore 下载](https://chrome.google.com/webstore/detail/%E5%8A%A0%E9%80%9F%E5%99%A8/hgifnmdnlmhphhpfhpaoljpakcndhnhj)
 
 [直接下载 CRX 文件](http://s.xmcp.ml/gofw/latest.crx)
-
-![code style: extremely bad](https://img.shields.io/badge/_code_style_-_extremely_bad_-red.svg)
 
 **（本扩展程序不是翻墙软件，不要指望能使用本程序上 Youtube）**
 
@@ -36,7 +39,7 @@ GoFW 将上述 JS 库重定向到国内的 [中科大Linux用户协会 CDN](http
 
 ## License
 
-> Copyright © 2015 xmcp
+> Copyright © 2017 xmcp
 
 > This work is free. You can redistribute it and/or modify it under the
 
