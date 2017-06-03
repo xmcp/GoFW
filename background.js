@@ -24,7 +24,6 @@ chrome.runtime.onInstalled.addListener(
       localStorage["gser"]=false;
       localStorage["icon"]=true;
       localStorage["jque"]=true;
-      localStorage["check"]="off";
       window.open(chrome.extension.getURL('options.html'));
     }
   }
@@ -171,55 +170,4 @@ function unbind(willrebind) {
   chrome.webRequest.onBeforeRequest.removeListener(nojque,nojque_filter,["blocking"]);
 }
 
-function checkNetwork() {
-  var xhr = new XMLHttpRequest();
-  xhr.open('get', 'http://api.map.baidu.com/location/ip?ak=cSjy2WQz2Kmhqcfgs6LGm18Q', true);
-  xhr.onload=function () {
-    var result=JSON.parse(xhr.responseText);
-    if (result['status']!==0) {
-      addr="您位于海外";
-      unbind();
-      return;
-    }
-    addr="您位于"+result['address'].split('|')[1];
-    if (result['address'].split('|')[0]==='CN')
-      bindreq();
-    else
-      unbind();
-  };
-  xhr.onerror=xhr.onabort=xhr.ontimeout=function(event) {
-    addr="（获取位置失败）";
-  };
-  xhr.setRequestHeader("If-Modified-Since", "0");
-  xhr.send();
-}
-function startCheckNetwork() {
-  checkNetwork();
-  window.checker=setInterval(checkNetwork,12*1000);
-}
-
-function checkProxy() {
-  chrome.proxy.settings.get(
-    {'incognito':true},
-    function(config){
-      console.log(config);
-   });
-}
-function startCheckProxy() {
-  checkProxy();
-  window.checker=setInterval(checkProxy,2*1000);
-}
-
-function startCheck() {
-  if(localStorage["check"]==="netchk")
-    startCheckNetwork();
-  else if(localStorage["check"]==="proxychk")
-    startCheckProxy();
-}
-function stopCheck() {
-  if(checker)
-    clearInterval(checker);
-}
-
 bindreq();
-startCheck();
