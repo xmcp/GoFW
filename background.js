@@ -1,8 +1,6 @@
 var count=[];
 var urls=[];
 var working=false;
-var addr='N/A';
-var checker=null;
 chrome.browserAction.setBadgeBackgroundColor({color:'#AA00AA'});
 chrome.extension.onRequest.addListener(
   function(request,sender,sendResponse) {
@@ -89,7 +87,7 @@ function nogser(details){
   return {"cancel": true};
 }
 var nogser_filter={
-  urls:["*://*.google.com/*","*://*.youtube.com/*","*://*.facebook.com/*","*://*.twitter.com/*","*://*.googlecode.com/*","*://*.gravatar.com/*"],
+  urls:["*://*.google.com/*","*://*.youtube.com/*","*://*.facebook.com/*","*://*.twitter.com/*","*://*.googlecode.com/*"],
   types:["sub_frame","stylesheet","script","image","object","xmlhttprequest","other"]
 };
 
@@ -119,6 +117,7 @@ var nojque_filter={
   types:["script"]
 };
 var jq_vers={
+  '3.2.1':true,'3.2.0':true,'3.1.1':true,'3.1.0':true,'3.0.0':true,'3.0.0-rc1':true,'3.0.0-beta1':true,
   '3.0.0-alpha1':true,'2.1.4':true,'2.1.3':true,'2.1.2':true,'2.1.1':true,'2.1.1-rc2':true,
   '2.1.1-rc1':true,'2.1.1-beta1':true,'2.1.0':true,'2.1.0-rc1':true,'2.1.0-beta3':true,
   '2.1.0-beta2':true,'2.0.3':true,'2.0.2':true,'2.0.1':true,'2.0.0':true,'1.11.3':true,
