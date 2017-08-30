@@ -14,14 +14,22 @@ chrome.extension.onRequest.addListener(
   }
 );
 
+function init_settings() {
+  function set_default(k,v) {
+    localStorage[k]=localStorage[k]||v;
+  }
+  set_default("gapi","true");
+  set_default("gana","true");
+  set_default("gser","false");
+  set_default("icon","true");
+  set_default("jque","true");
+  set_default("badge","true");
+}
+init_settings();
+
 chrome.runtime.onInstalled.addListener(
   function(details) {
     if(details.reason==="install") {
-      localStorage["gapi"]=true;
-      localStorage["gana"]=true;
-      localStorage["gser"]=false;
-      localStorage["icon"]=true;
-      localStorage["jque"]=true;
       window.open(chrome.extension.getURL('options.html'));
     }
   }
@@ -38,7 +46,8 @@ function push(details,department) {
   if(urls[tabid]===undefined)
     urls[tabid]=[];
   urls[tabid].push([details.url,department]);
-  chrome.browserAction.setBadgeText({text:urls[tabid].length.toString(),tabId:tabid});
+  if(localStorage["badge"]==="true")
+    chrome.browserAction.setBadgeText({text:urls[tabid].length.toString(),tabId:tabid});
 }
 
 chrome.tabs.onUpdated.addListener(

@@ -3,6 +3,7 @@ var gana=document.getElementById('gana');
 var gser=document.getElementById('gser');
 var icon=document.getElementById('icon');
 var jque=document.getElementById('jque');
+var badge=document.getElementById('badge');
 var bgpage=chrome.extension.getBackgroundPage();
 function save_options(name) {
   localStorage[name.id]=localStorage[name.id]!=='true';
@@ -18,6 +19,7 @@ function restore_options() {
   gser.checked=localStorage["gser"]==='true';
   icon.checked=localStorage["icon"]==='true';
   jque.checked=localStorage["jque"]==='true';
+  badge.checked=localStorage["badge"]==='true';
 }
 
 document.addEventListener('DOMContentLoaded',function(){
@@ -34,3 +36,4 @@ gana.addEventListener('click',function(){save_options(gana);});
 gser.addEventListener('click',function(){save_options(gser);});
 icon.addEventListener('click',function(){save_options(icon);});
 jque.addEventListener('click',function(){save_options(jque);});
+badge.addEventListener('click',function(){save_options(badge);});
