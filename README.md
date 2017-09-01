@@ -15,7 +15,7 @@
 
 - 网站用了 Google API 或者 Google 字体库，导致页面错乱
 - 网站用了境外 jQuery CDN，导致JS半天加载不了
-- 网站用了 Google Analytics，导致页面加载缓慢
+- <del>网站用了 Google Analytics，导致页面加载缓慢</del> *最近 Google Analytics 比较稳定，因此移除了这一项*
 - 网页内嵌了 facebook 分享按钮，导致网页白屏半分钟
 - 网页的 Glyphicons 图标总是刷不出来，导致页面排版问题
 

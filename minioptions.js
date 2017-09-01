@@ -1,5 +1,4 @@
 var gapi=document.querySelector('#gapi');
-var gana=document.querySelector('#gana');
 var gser=document.querySelector('#gser');
 var icon=document.querySelector('#icon');
 var jque=document.querySelector('#jque');
@@ -16,7 +15,6 @@ function save_options(name) {
 function restore_options() {
   killer.className=bgpage.working ?"btn btn-sm on":"btn btn-sm off";
   gapi.className=localStorage["gapi"]==='true'?"btn btn-xs on":"btn btn-xs off";
-  gana.className=localStorage["gana"]==='true'?"btn btn-xs on":"btn btn-xs off";
   gser.className=localStorage["gser"]==='true'?"btn btn-xs on":"btn btn-xs off";
   icon.className=localStorage["icon"]==='true'?"btn btn-xs on":"btn btn-xs off";
   jque.className=localStorage["jque"]==='true'?"btn btn-xs on":"btn btn-xs off";
@@ -33,7 +31,6 @@ function switchkiller() {
 }
 document.addEventListener('DOMContentLoaded',restore_options);
 gapi.addEventListener('click',function(){save_options(gapi);});
-gana.addEventListener('click',function(){save_options(gana);});
 gser.addEventListener('click',function(){save_options(gser);});
 icon.addEventListener('click',function(){save_options(icon);});
 jque.addEventListener('click',function(){save_options(jque);});

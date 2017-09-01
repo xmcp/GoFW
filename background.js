@@ -19,7 +19,6 @@ function init_settings() {
     localStorage[k]=localStorage[k]||v;
   }
   set_default("gapi","true");
-  set_default("gana","true");
   set_default("gser","false");
   set_default("icon","true");
   set_default("jque","true");
@@ -81,15 +80,6 @@ function nogapi(details){
 var nogapi_filter={
   urls:["*://ajax.googleapis.com/*","*://fonts.googleapis.com/*"],
   types:["stylesheet","script"]};
-
-function nogana(details){
-  push(details,'拦截谷歌统计');
-  return {"cancel": true};
-}
-var nogana_filter={
-  urls:["*://www.google-analytics.com/*"],
-  types:["script","image","object","xmlhttprequest","other"]
-};
 
 function nogser(details){
   push(details,'拦截无效服务');
@@ -156,8 +146,6 @@ function bindreq() {
   chrome.browserAction.setIcon({path:'icons/action.png'});
   if(localStorage["gapi"]==='true')
     chrome.webRequest.onBeforeRequest.addListener(nogapi,nogapi_filter,["blocking"]);
-  if(localStorage["gana"]==='true')
-    chrome.webRequest.onBeforeRequest.addListener(nogana,nogana_filter,["blocking"]);
   if(localStorage["gser"]==='true')
     chrome.webRequest.onBeforeRequest.addListener(nogser,nogser_filter,["blocking"]);
   if(localStorage["icon"]==='true')
@@ -172,7 +160,6 @@ function unbind(willrebind) {
     chrome.browserAction.setBadgeText({text:''});
   }
   chrome.webRequest.onBeforeRequest.removeListener(nogapi,nogapi_filter,["blocking"]);
-  chrome.webRequest.onBeforeRequest.removeListener(nogana,nogana_filter,["blocking"]);
   chrome.webRequest.onBeforeRequest.removeListener(nogser,nogser_filter,["blocking"]);
   chrome.webRequest.onBeforeRequest.removeListener(noicon,noicon_filter,["blocking"]);
   chrome.webRequest.onBeforeRequest.removeListener(nojque,nojque_filter,["blocking"]);
